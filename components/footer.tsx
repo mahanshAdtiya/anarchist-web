@@ -1,0 +1,15 @@
+import React from 'react'
+
+function footer() {
+    return (
+        <footer className="bg-white border-t">
+            <div className="py-10 mx-auto">
+                <p className="text-xs text-center text-black">
+                    &copy; 2025 Anarchist, Inc. All rights reserved.
+                </p>
+            </div>
+        </footer>
+    )
+}
+
+export default footer
