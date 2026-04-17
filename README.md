@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Anarchist Store
+
+E-commerce frontend for the Anarchist brand — built with Next.js 15 and the App Router.
+
+## Tech Stack
+
+- **Framework:** Next.js 15.2 (App Router) + React 19
+- **Styling:** Tailwind CSS 4.0
+- **UI:** Radix UI primitives + custom Shadcn-style components
+- **State:** Zustand with localStorage persistence
+- **Animations:** Framer Motion
+- **Images:** Cloudinary
+
+## Features
+
+- Home page with hero banners and featured products
+- Category pages with size/color filters (mobile + desktop)
+- Product detail pages with image gallery, variant selection, and related products
+- Persistent shopping cart with add/remove and quantity management
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm
+
+### Install dependencies
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create a `.env.local` file in the root:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8080
+```
 
-## Learn More
+This should point to your backend API URL.
 
-To learn more about Next.js, take a look at the following resources:
+### Run the development server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+app/
+  (routes)/
+    page.tsx              # Home page
+    category/[categoryId] # Category listing with filters
+    product/[productId]   # Product detail page
+components/
+  ui/                     # Reusable UI primitives
+  NavbarClient.tsx        # Navigation with cart icon
+  product-list.tsx        # Product grid
+hooks/
+  use-cart.ts             # Zustand cart store
+lib/
+  api.ts                  # API fetch helpers
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## API Endpoints Used
+
+| Resource   | Endpoint            |
+|------------|---------------------|
+| Products   | `GET /products`     |
+| Product    | `GET /products/:id` |
+| Categories | `GET /categories`   |
+| Sizes      | `GET /sizes`        |
+| Colors     | `GET /colors`       |
+| Billboards | `GET /billboards/:id` |
+
+## Scripts
+
+| Command       | Description              |
+|---------------|--------------------------|
+| `pnpm dev`    | Start development server |
+| `pnpm build`  | Build for production     |
+| `pnpm start`  | Start production server  |
+| `pnpm lint`   | Run ESLint               |

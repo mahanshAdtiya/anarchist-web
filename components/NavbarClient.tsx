@@ -48,7 +48,7 @@ const finalIconColor = pathname.startsWith("/product/") || isScrolled || pathnam
 
   return (
     <div className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${finalBgColor}`}>
-      <div className="relative flex items-center h-16 px-4 sm:px-6 lg:px-8">
+      <div className="relative flex items-center justify-around h-16 px-4 sm:px-6 lg:px-8">
         <button onClick={openSidebar} className="mr-4 p-2 rounded-md cursor-pointer">
           <Menu className={`${finalIconColor} !w-[25px] !h-[25px]`} />
         </button>
@@ -62,7 +62,7 @@ const finalIconColor = pathname.startsWith("/product/") || isScrolled || pathnam
           </button>
         </div>
 
-        <div className="flex items-center gap-x-4">
+        <div className="flex items-center ">
           {[
             { icon: <Search />, link: "/search" },
             { icon: <User />, link: "/account" },
@@ -75,9 +75,9 @@ const finalIconColor = pathname.startsWith("/product/") || isScrolled || pathnam
             <Button
               key={index}
               onClick={() => router.push(link)}
-              className="relative p-2 rounded-md cursor-pointer bg-transparent hover:bg-transparent"
+              className="relative p-2 rounded-md cursor-pointer bg-transparent shadow-none hover:bg-transparent"
             >
-              <div className={`w-8 h-8 flex items-center justify-center ${finalIconColor}`}>
+              <div className={`w-8 h-8 flex items-center bg-none  justify-center ${finalIconColor}`}>
                 {icon}
               </div>
               {badge && (
