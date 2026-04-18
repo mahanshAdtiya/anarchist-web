@@ -26,22 +26,22 @@ const getProducts = async (query: Query): Promise<Product[]> => {
     { skipNull: true, skipEmptyString: true }
   );
 
-  const res = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    cache: "no-cache",
-  });
+  try {
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-cache",
+    });
 
-  if (!res.ok) {
-    console.error(`Failed to fetch products: ${res.statusText}`);
+    if (!res.ok) return [];
+
+    const jsonResponse = await res.json();
+    return Array.isArray(jsonResponse.data) ? jsonResponse.data : [];
+  } catch {
     return [];
   }
-
-  const jsonResponse = await res.json();
-
-  return Array.isArray(jsonResponse.data) ? jsonResponse.data : [];
 };
 
 export default getProducts;

@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Filter from "./components/filter";
 import Billboard from "@/components/Billboard";
 import Container from "@/components/ui/container";
@@ -41,8 +42,10 @@ const CategoryPage = async ({ params, searchParams }: { params: Params; searchPa
                         <MobileFilters sizes={sizes} colors={colors} />
 
                         <div className="hidden lg:block">
-                            <Filter valueKey="sizeId" name="Sizes" data={sizes} />
-                            <Filter valueKey="colorId" name="Colors" data={colors} />
+                            <Suspense fallback={null}>
+                                <Filter valueKey="sizeId" name="Sizes" data={sizes} />
+                                <Filter valueKey="colorId" name="Colors" data={colors} />
+                            </Suspense>
                         </div>
 
                         <div className="mt-6 lg:col-span-4 lg:mt-0">
