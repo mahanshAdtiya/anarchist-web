@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import getProducts from "@/actions/get-products";
 import getProduct from "@/actions/get-product";
@@ -8,7 +8,6 @@ import ProductList from "@/components/product-list";
 import Container from "@/components/ui/container";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { ShoppingCart } from "lucide-react";
-import { Product } from "@/types";
 import MobileProductPage from "./components/mobile-product";
 
 type Params = Promise<{ productId: string }>;

@@ -32,7 +32,6 @@ const ShippingPayment = () => {
     const searchParams = useSearchParams();
     const removeAll = useCart(state => state.removeAll);
     const items = useCart(state => state.items);
-    const totalPrice = items.reduce((total, item) => total + Number(item.price), 0);
 
     useEffect(() => {
         if (searchParams.get("success")) {
@@ -46,7 +45,7 @@ const ShippingPayment = () => {
         }
     }, [searchParams, removeAll]);
 
-    const { register, handleSubmit, formState: { errors }, setValue, reset } = useForm({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm({
         resolver: zodResolver(checkoutSchema),
         defaultValues: {
             name: "",
@@ -67,7 +66,7 @@ const ShippingPayment = () => {
         },
     });
     
-    const onSubmit = async (data: any) => {
+    const onSubmit = async (data: z.infer<typeof checkoutSchema>) => {
         const formattedData = {
             ...data,
             shippingAddress: {
@@ -102,7 +101,7 @@ const ShippingPayment = () => {
             
             toast.success("Order placed successfully!");
             redirect("/");
-        } catch (error) {
+        } catch {
             toast.error("Something went wrong.");
         }
     };

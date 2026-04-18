@@ -6,11 +6,15 @@ import useNavbarStore from "@/hooks/useNavbarStore";
 
 export default function NavbarController() {
   const pathname = usePathname();
-  const setTransparent = useNavbarStore((state) => state.setTransparent);
+  const setNavbarStyles = useNavbarStore((state) => state.setNavbarStyles);
 
   useEffect(() => {
-    setTransparent(pathname === "/");
-  }, [pathname, setTransparent]);
+    if (pathname === "/") {
+      setNavbarStyles("bg-transparent", "text-white");
+    } else {
+      setNavbarStyles("bg-white", "text-black");
+    }
+  }, [pathname, setNavbarStyles]);
 
   return null; 
 }
