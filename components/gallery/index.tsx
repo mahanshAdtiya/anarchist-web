@@ -25,7 +25,7 @@ const Gallery: React.FC<GalleryProps> = ({ images }) => {
                 {images.map(image => (
                     <TabPanel key={image.id}>
                         <div className='relative w-full h-full overflow-hidden aspect-square sm:rounded-lg'>
-                            <Image fill src={image.url} alt={'Image'} className='object-cover object-center' />
+                            <Image fill sizes="(max-width: 1024px) 100vw, 50vw" src={image.url} alt={'Image'} className='object-cover object-center' />
                         </div>
                     </TabPanel>
                 ))}

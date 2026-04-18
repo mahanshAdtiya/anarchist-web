@@ -13,9 +13,10 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
             <Image 
                 src={data.imageUrl} 
                 alt={data.label} 
-                fill 
+                fill
+                sizes="100vw"
                 className="object-cover"
-                priority 
+                priority
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black/40">
                 <h1 className="text-4xl font-bold text-white sm:text-6xl lg:text-7xl">

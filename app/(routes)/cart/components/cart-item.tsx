@@ -25,6 +25,7 @@ const CartItem: React.FC<CartItemProps> = ({ data, selectedSize }) => {
             <div className='relative w-24 h-24 overflow-hidden rounded-md sm:h-48 sm:w-48'>
                 <Image
                     fill
+                    sizes="(max-width: 640px) 96px, 192px"
                     src={data.images[0].url}
                     alt={data.name}
                     className='object-cover object-center'
